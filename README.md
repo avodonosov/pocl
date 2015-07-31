@@ -22,9 +22,9 @@ we determined that in average web application only around 25-30 % of the
 javascript functions loaded into the browser are actually called at runtime.
 
 Tested it also with my web application http://testsheet.biz. This
-application uses very small amount of libraries, and I can invoke every
-application feature in UI. Around 50% of JS functions of testsheet.biz
-are invoked at run-time.
+application uses very small amount of libraries, and is small enough
+to invoke every application feature in UI.
+Around 50% of JS functions of testsheet.biz are invoked at run-time.
 
 ## Actually removing the unused code
 
