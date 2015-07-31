@@ -36,7 +36,7 @@ The prototype assumes all the app javascript is combined into a single file.
 Based on call statistics this codebase is separated into
 two files: "active" and the "rest":
 
-
+```
              call statistics
                     |
                     V
@@ -45,6 +45,7 @@ myapp.min.js ->  | POCL | -> myapp.min.a.js
                  |      | -> myapp.min.r.js
                  └------┘
 
+```
 
 The web page includes the "active" script:
 <script src="myapp.min.a.js"></script>
