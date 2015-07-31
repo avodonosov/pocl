@@ -105,8 +105,6 @@ This approach can be applied not only to Javascript but to other languages
 and run-time systems. I originally invented it in 2013 when dreaming
 about in-browser Common Lisp implementation.
 
-## Security
-
-## Privacy
-
-## What to download from the internet, and what to load into any particular web page.
+- Security
+- Privacy
+- What to download from the internet, and what to load into any particular web page.
