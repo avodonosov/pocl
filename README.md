@@ -48,7 +48,9 @@ myapp.min.js ->  | POCL | -> myapp.min.a.js
 ```
 
 The web page includes the "active" script:
+```html
 <script src="myapp.min.a.js"></script>
+```
 
 Initially, when there is no call statistics, the "active" file includes all the functions.
 As enough statistics is accumulated, the compilation is repeated
