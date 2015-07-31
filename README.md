@@ -6,7 +6,7 @@ Study of application acceleration by reducing the size of code to be loaded.
 and loading only them when the application is started next time. (The rest of the functions
 remain available and loaded at first invocation.)
 
-1.2 Also, initially load only the code used _immediately_ at the application startup
+1.2 Initially load only the code used _immediately_ at the application startup
 (renders initial UI, load initial data). Other code could be loaded afterwards in background,
 or upon some events (user navigates to a certain part of the app).
 
