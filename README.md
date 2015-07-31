@@ -58,7 +58,7 @@ and new .a and .r files are generated. Now the .a file only contains
 the functions seen invoked. Should any other function be called by the application,
 its stub loads the .r file.
 
-This setup allows to employ POCL along otherwise static web sites.
+This setup allows to employ POCL even for otherwise static web sites.
 (TODO: make it possible to include hash codes into file names,
 for more reliable work with HTTP cashes, and deployment of new versions
 of myapp.min.js file, new versions of POCL)
