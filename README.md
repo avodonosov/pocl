@@ -82,7 +82,7 @@ JS size.
 Taking into account that at testsheet.biz, of all JS functions
 around 50% are used, and that in many other applications only
 around 20-30% of functions are used, we can estimate
-that for an average application its code side can be reduced to maybe
+that for an average application its code size can be reduced to maybe
 40% of the original size.
 
 # Advantages
