@@ -18,7 +18,7 @@ We study this approach in application to javascript in web applications.
 
 By opening real world web applications (Google Docs, github, etc) via
 proxy, which instruments their javascript code to record function invocations,
-we determined that in an average web application only around 25-30 % of the
+we determined that in an average web application only around 20-45 % of the
 javascript functions loaded into the browser are actually called at runtime.
 
 Tested it also with my web application http://testsheet.biz. This
