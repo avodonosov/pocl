@@ -21,6 +21,8 @@ proxy, which instruments their javascript code to record function invocations,
 we determined that in an average web application only around 20-45 % of the
 javascript functions loaded into the browser are actually called at runtime.
 
+<a href="https://www.youtube.com/watch?v=SORW9PPFF5s" target="_blank"><img src="pocl-1-youtube.png"></a>
+
 Tested it also with my web application http://testsheet.biz. This
 application uses very small amount of libraries, and is small enough
 to invoke every application feature in UI.
