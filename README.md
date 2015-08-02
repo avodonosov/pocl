@@ -26,7 +26,7 @@ javascript functions loaded into the browser are actually called at runtime.
 Tested it also with my web application http://testsheet.biz. This
 application uses very small amount of libraries, and is small enough
 to invoke every application feature in UI.
-Around 50% of JS functions of testsheet.biz are invoked at run-time.
+Around 47% of JS functions of testsheet.biz are invoked at run-time.
 
 ## Actually removing the unused code
 
@@ -82,10 +82,10 @@ can be removed, making the testsheet.min.a.js around 58% of the original
 JS size.
 
 Taking into account that at testsheet.biz, of all JS functions
-around 50% are used, and that in many other applications only
-around 20-30% of functions are used, we can estimate
+only 47% are used, and that in many other applications only
+around 35% of functions are used, we can estimate
 that for an average application its code size can be reduced to maybe
-40% of the original size.
+45% of the original size.
 
 # Advantages
 
