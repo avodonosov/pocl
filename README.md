@@ -33,6 +33,8 @@ Around 47% of JS functions of testsheet.biz are invoked at run-time.
 We have created a prototype which removes the unused code based on the
 function call statistics.
 
+<a href="https://www.youtube.com/watch?v=ciKSqUfdC8k" target="_blank"><img src="pocl-2-youtube.png"></a>
+
 It's a javascript-to-javascript compiler, which replaces each unused function
 by a stub. The stub, when invoked, first records the fact that it was invoked,
 then loads the original function body and executes it. The function calls
