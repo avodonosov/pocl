@@ -126,7 +126,7 @@ Differentiate between what to download from the internet, and what to load into 
 For popular libraries used by many web pages (e.g. jquery), large part of the library may be downloaded from Internet to the local cache, and only part of that code is loaded into each particular web page. (This assumes we
 don't require all the application code to be combined into a single file).
 
-When deciding what to load, consider not just what web application is it, but what browser is used; maybe differentiate users into classes (occasional user who only invokes minor part of fuctionality versus pro users who use more features).
+When deciding what to load, consider not just what web application is it, but what browser is used; maybe differentiate users into classes (example: occasional user who only invokes minor part of fuctionality versus pro users who use more features).
 
 How important is the win we have? If we reduce the javascript size to 50% (1.1), or even implement the more intelligent handling (1.2) by loading only around 20% of JS initially, and preloading in background the scripts probable to be used soon (for example, when initial google sarch page is loaded, we could load in background the scripts necessary for the search results page). Will it improve significantly the performance of particular web applications, user system in general, and Internet as a whole?
 
