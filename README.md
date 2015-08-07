@@ -80,9 +80,9 @@ Taking into account that in testsheet.min.js, of all JS functions
 only 50% are used, and that in many other applications only
 around 35% of functions are used, we can estimate
 that for an average application its code size can be reduced to maybe
-50% of the original size.
+a half of the original size.
 
-There overhead in file size comparing to the number of invoked functions
+The overhead in file size comparing to the number of invoked functions
 (68% / 50%) is caused by the fact we don't just remove the unused functions,
 but replace them with a stub expression, able to load the original function and call it.
 Also, if we remove closured, when the original closure body is loaded by the stub,
@@ -117,7 +117,7 @@ about in-browser Common Lisp implementation.
 
 Not only the application code, but also the standard library of the language could be minimized that way.
 
-POCL could be deployed as a tool individually for every web application, as a cloud web acceleration service, or as part of browser implementation.
+POCL could be deployed as a tool individually for every web application, as a cloud web acceleration service, or as part of browser implementation. In the last case we could have better minimization if the browser JS engine is adjusted to support POCL natively, thus eliminating the need for some support code injected into the JS sources.
 
 Differentiate between what to download from the internet, and what to load into any particular web page.
 For popular libraries used by many web pages (e.g. jquery), large part of the library may be downloaded from Internet to the local cache, and only part of that code is loaded into each particular web page. (This assumes we
