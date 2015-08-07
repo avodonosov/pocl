@@ -132,6 +132,6 @@ How important is the win we have? If we reduce the javascript size to 50% (1.1),
 
 Security: what if somebody maliciously submits false usage statistics? In the worst case whole the javascript code will be loaded into browser, as without POCL - not a big problem. And this problem can be solved too. For example, services like CloudFlare protect web apps from malicious activities. Also, if we differentiate users into classes, the malicious statistics will not affect all the users, only those looking similar to the attacker (maybe only other hooligans like him).
 
-Privacy: so, we upload code usage statistics to online storage. Does it violate user's privacy? - No. First of all, web servers see each URL accesses by the user; if they were going to, spy the URLs is more than enough, seeing what JS functions are invoked doesn't change much. And most importantly, the POCL statistics is anonymous. 
+Privacy: so, we upload code usage statistics to online storage. Does it violate user's privacy? - No. First of all, web servers see each URL accesses by the user; if they were going to spy, the URLs is more than enough, seeing what JS functions are invoked doesn't change much. And most importantly, the POCL statistics is anonymous. 
 
 It would be nice to find support for several month of work to continue investigating the POCL concept.
