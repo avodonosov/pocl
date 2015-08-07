@@ -86,8 +86,8 @@ a half of the original size.
 The overhead in file size comparing to the number of invoked functions
 (68% / 50%) is caused by the fact we don't just remove the unused functions,
 but replace them with a stub expression, able to load the original function and call it.
-Also, if we remove closured, when the original closure body is loaded by the stub,
-we need to provide it with access to variable captured by the closure from the surrounding scope.
+Also, if we remove closures, when the original closure body is loaded by the stub,
+we need to provide it with access to variables captured by the closure from the surrounding scope.
 It requires some code to be injected, therefore adds to the overhead. Probably the injected
 code can be made more compact, but some overhead will remain anyway, unless POCL is supported by the javascript
 engine natively.
