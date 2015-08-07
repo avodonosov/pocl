@@ -38,7 +38,7 @@ function call statistics.
 It's a javascript-to-javascript compiler, which replaces each unused function
 by a stub. The stub, when invoked, first records the fact that it was invoked,
 then loads the original function body and executes it. The function calls
-statistics is accumulated and uploaded to the POCL server to adjust the code.
+statistics is accumulated and uploaded to the POCL server to adjust the code - include only functons seen to be called and remove the rest.
 
 The prototype assumes all the app javascript is combined into a single file.
 Based on call statistics this codebase is separated into
