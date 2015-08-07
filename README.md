@@ -87,7 +87,9 @@ There overhead in file size comparing to the number of invoked functions
 but replace them with a stub expression, able to load the original function and call it.
 Also, if we remove closured, when the original closure body is loaded by the stub,
 we need to provide it with access to variable captured by the closure from the surrounding scope.
-It requires some code to be injected, therefore adds to the overhead.
+It requires some code to be injected, therefore adds to the overhead. Probably the injected
+code can be made more compact, but some overhead will remain anyway, unless POCL is supporeted by the javascript
+engine natively.
 
 # Advantages
 
@@ -115,8 +117,16 @@ about in-browser Common Lisp implementation.
 
 Not only the application code, but also the standard library of the language could be minimized that way.
 
+POCL could be deployed as a tool individually for every web application, as a cloud web acceleration service, or as part of browser implementation.
+
+Differentiate between what to download from the internet, and what to load into any particular web page.
+For popular libraries used by many web pages (e.g. jquery), large part of the library may be downloaded from Internet to the local cache, and only part of that code is loaded into each particular web page. (This assumes we
+don't require all the application code to be combined into a single file).
+
 How important is the win we have? If we reduce the javascript size to 50% (1.1), or even implemnet the more intelliject handling (1.2) by loading only around 20% of JS initially, and preloading in background the scripts probable to be used soon (for example, when initial google sarch page is loaded, we chould load in background the scripts necessary for the search results page). Will it improve significanlty the performance of particular web applications, user system in general, and Internet as a whole?
 
-- Security
-- Privacy
-- What to download from the internet, and what to load into any particular web page.
+Security: what if somebody malicously submits false the usage statistics? In the worst case whole the javascript code will be loaded into browser, as without POCL - not a big problem. And this problem can be solved too. For example, services like CloudFlare protect web apps from malicious activities. Also, if we differentiate users into classes, the malicious statistics will not affect all the users, only those looking similar to the attacker (maybe only other hooligans like him).
+
+Privacy: so, we upload code usage statistics to online storage. Does it violate user's privacy? - No. First of all, web servers see each URL accesses by the user; if they were going to, spy the URLs is more thatn enough, seeing what JS functions are invoked doesn't change much. And most importantly, the POCL statistics is anonymous. 
+
+
