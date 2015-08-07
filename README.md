@@ -113,7 +113,7 @@ more intelligent statistics handling).
 
 This approach can be applied not only to Javascript but to other languages
 and run-time systems. I originally invented it in 2013 when dreaming
-about in-browser Common Lisp implementation.
+about in-browser Common Lisp implementation. Most of Common Lisp implementation have relatevely large application load time, and I wanted to reduce this time, because in case of web pages, even 2 seconds startup time is too long. Therefore I was thinking how to reduce the load time. For example Java loads classes not immediately at startup, but only when the class is first accessed at run-time. But when executed in a web page, making a separate request for every function would not be effective. Java would download the whole .jar file. But I was thinking to use some kind of cache and download only the functions actually used. Another analogy, is startup of native applications by contemporary operating systems. The system frist maps the exectutable file into virtual memory. And only when code is accessed by CPU, the page is loaded from disk. If we start the same program again, some pages could be cached in memory, so OS does not need to load this code from disk again. The difference from POCL here is granularity: functoins vs code pages. A code page could contain some unused code too. Also in OS the cache is ephemeral, in-memory. It's not persisted and not shared between distributed systems.
 
 Not only the application code, but also the standard library of the language could be minimized that way.
 
@@ -122,6 +122,8 @@ POCL could be deployed as a tool individually for every web application, as a cl
 Differentiate between what to download from the internet, and what to load into any particular web page.
 For popular libraries used by many web pages (e.g. jquery), large part of the library may be downloaded from Internet to the local cache, and only part of that code is loaded into each particular web page. (This assumes we
 don't require all the application code to be combined into a single file).
+
+When deciding what to load, consider not just what web application is it, but what browser is used; maybe differenticate users into classes (occasional user who only invokes minor part of fuctionality versus pro users who use more features).
 
 How important is the win we have? If we reduce the javascript size to 50% (1.1), or even implemnet the more intelliject handling (1.2) by loading only around 20% of JS initially, and preloading in background the scripts probable to be used soon (for example, when initial google sarch page is loaded, we chould load in background the scripts necessary for the search results page). Will it improve significanlty the performance of particular web applications, user system in general, and Internet as a whole?
 
