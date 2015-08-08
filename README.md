@@ -27,7 +27,7 @@ Tested it also with my web application http://testsheet.biz. This
 application will be used later to experiment with actual code removal.
 The average JS functions usage ratio was 37%. The main JS file of the
 application - testsheet.min.a.js - has usage ratio of 50%. Other files - 
-google libraries loaded dynamically have lower usage ration.
+google libraries loaded dynamically - have lower usage ratio.
 
 ## Actually removing the unused code
 
@@ -37,7 +37,7 @@ function call statistics.
 <a href="https://www.youtube.com/watch?v=ciKSqUfdC8k" target="_blank"><img src="pocl-2-youtube.png"></a>
 
 It's a javascript-to-javascript compiler, which replaces each unused function
-by a stub. The stub, when invoked, first records the fact that it was invoked,
+with a stub. The stub, when invoked, first records the fact that it was invoked,
 then loads the original function body and executes it. The function calls
 statistics is accumulated and uploaded to the POCL server to adjust the code - include only functons seen actually called and remove the rest. Essentially, it implements statistical dead code elimination (1.1).
 
@@ -87,7 +87,7 @@ The overhead in file size comparing to the number of invoked functions
 (68% / 50%) is caused by the fact we don't just remove the unused functions,
 but replace them with a stub expression, able to load the original function and call it.
 Also, if we remove closures, when the original closure body is loaded by the stub,
-we need to provide it with access to variables captured by the closure from the surrounding scope.
+we need to provide it with access to the variables captured by the closure from the surrounding scope.
 It requires some code to be injected, therefore adds to the overhead. Probably the injected
 code can be made more compact, but some overhead will remain anyway, unless POCL is supported by the javascript
 engine natively.
@@ -114,7 +114,7 @@ more intelligent statistics handling).
 
 This approach can be applied not only to Javascript but to other languages
 and run-time systems. I originally invented it in 2013 when dreaming
-about in-browser Common Lisp implementation. Only later I understood it's not necessary to have control on the language implementation to investigate this idea, and decided to try on Javascript. Most of Common Lisp implementation have relatevely large application load time, and I wanted to reduce this time, because in case of web pages, even 2 seconds startup time is too long. I was thinking how to reduce the load time. For example Java loads classes not immediately at startup, but only when the class is first accessed at run-time. But when executed in a web page, making a separate request for every function would not be effective. Java would download the whole .jar file. But I was thinking to use some kind of cache and download only the functions actually used. Another analogy, is startup of native applications by contemporary operating systems. The system frist maps the executable file into virtual memory. And only when code is accessed by CPU, the code page is loaded from disk. The pages which are never accessed are never loaded. If we start the same program again, some pages could still remain cached in memory, so OS does not need to load this code from disk again. The difference from POCL here is granularity: functions vs code pages. A code page could contain together with active code some unused (dead) code too. Also in OS the cache is ephemeral, in-memory. It's not persisted and not shared between distributed systems.
+about in-browser Common Lisp implementation. Only later I understood it's not necessary to have control on the language implementation to investigate this idea, and decided to try on Javascript. Most of Common Lisp implementations have relatevely large application load time, and I wanted to reduce this time, because in case of web pages, even 2 seconds startup time is too long. I was thinking how to reduce the load time. For example Java loads classes not immediately at startup, but only when the class is first accessed at run-time. But when executed in a web page, making a separate request for every function would not be effective. Java would download the whole .jar file. But I was thinking to use some kind of cache and download only the functions actually used. Another analogy, is startup of native applications by contemporary operating systems. The system frist maps the executable file into virtual memory. And only when code is accessed by CPU, the code page is loaded from disk. The pages which are never accessed are never loaded. If we start the same program again, some pages could still remain cached in memory, so OS does not need to load this code from disk again. The difference from POCL here is granularity: functions vs code pages. A code page could contain together with active code some unused (dead) code too. Also in OS the cache is ephemeral, in-memory. It's not persisted and not shared between distributed systems.
 
 The difference from the approach currently used in JS: instead of the programmer specifying explicitly what code to laod and when, programmer only specifies what code constitutes his "codebase", and runtime system decides itself what code to load and when.
 
@@ -123,10 +123,10 @@ Not only the application code, but also the standard library of the language cou
 POCL could be deployed as a tool individually for every web application, as a cloud web acceleration service, or as part of browser implementation. In the last case we could have better minimization if the browser JS engine is adjusted to support POCL natively, thus eliminating the need for some support code injected into the JS sources.
 
 Differentiate between what to download from the internet, and what to load into any particular web page.
-For popular libraries used by many web pages (e.g. jquery), large part of the library may be downloaded from Internet to the local cache, and only part of that code is loaded into each particular web page. (This assumes we
-don't require all the application code to be combined into a single file).
+For popular libraries used by many web pages (e.g. jquery), large part of the library may be downloaded from Internet to the local cache, and only sub-part of that code is loaded into each particular web page.
+(This assumes we don't require all the application code to be combined into a single file).
 
-When deciding what to load, consider not just what web application is it, but what browser is used; maybe differentiate users into classes (example: occasional user who only invokes minor part of fuctionality versus pro users who use more features).
+When deciding what to load, consider not just what web application it is, but what browser is used; maybe differentiate users into classes (example: occasional user who only invokes minor part of fuctionality versus pro users who use more features).
 
 How important is the win we have? If we reduce the javascript size to 50% (1.1), or even implement the more intelligent handling (1.2) by loading only around 20% of JS initially, and preloading in background the scripts probable to be used soon (for example, when initial google sarch page is loaded, we could load in background the scripts necessary for the search results page). Will it improve significantly the performance of particular web applications, user system in general, and Internet as a whole?
 
@@ -135,3 +135,5 @@ Security: what if somebody maliciously submits false usage statistics? In the wo
 Privacy: so, we upload code usage statistics to online storage. Does it violate user's privacy? - No. First of all, web servers see each URL accesses by the user; if they were going to spy, the URLs is more than enough, seeing what JS functions are invoked doesn't change much. And most importantly, the POCL statistics is anonymous. 
 
 It would be nice to find support for several month of work to continue investigating the POCL concept.
+
+To be continued...
