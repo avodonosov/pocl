@@ -117,8 +117,8 @@ and run-time systems. I originally invented it in 2013 when dreaming
 about in-browser Common Lisp implementation. Only later I understood it's not necessary to have control on the language implementation to investigate this idea, and decided to try on Javascript. Most of Common Lisp implementations have relatevely large application load time, and I wanted to reduce this time, because in case of web pages, even 2 seconds startup time is too long. I was thinking how to reduce the load time. For example Java loads classes not immediately at startup, but only when the class is first accessed at run-time. But when executed in a web page, making a separate request for every function would not be effective. Java would download the whole .jar file. But I was thinking to use some kind of cache and download only the functions actually used. Another analogy is startup of native applications by contemporary operating systems. The system frist maps the executable file into virtual memory. And only when code is accessed by CPU, the code page is loaded from disk. The pages which are never accessed are never loaded. If we start the same program again, some pages could still remain cached in memory, so OS does not need to load this code from disk again. The difference from POCL here is granularity: functions vs code pages. A code page could contain together with active code some unused (dead) code too. Also in OS the cache is ephemeral, in-memory. It's not persisted and not shared between distributed systems.
 
 People have shown me similar tools:
-https://www.instartlogic.com/blog/dont-buy-the-javascript-you-dont-use
-http://research.microsoft.com/en-us/projects/doloto/
+- https://www.instartlogic.com/blog/dont-buy-the-javascript-you-dont-use
+- http://research.microsoft.com/en-us/projects/doloto/
 
 The difference from the approach currently used in JS: instead of the programmer specifying explicitly what code to load and when, programmer only specifies what code constitutes his "codebase", and runtime system decides itself what code to load and when.
 
