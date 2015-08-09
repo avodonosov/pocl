@@ -26,7 +26,7 @@ javascript functions loaded into the browser are actually called at runtime.
 Tested it also with my web application http://testsheet.biz. This
 application will be used later to experiment with actual code removal.
 The average JS functions usage ratio was 37%. The main JS file of the
-application - testsheet.min.a.js - has usage ratio of 50%. Other files - 
+application - testsheet.min.js - has usage ratio of 50%. Other files - 
 google libraries loaded dynamically - have lower usage ratio.
 
 ## Actually removing the unused code
