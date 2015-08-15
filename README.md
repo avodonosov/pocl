@@ -4,7 +4,7 @@ Study of application acceleration by reducing the size of code to be loaded.
 
 1.1 The minimization is based on statistics of what functions are really invoked at runtime,
 and loading only them when the application is started next time. (The rest of the functions
-remain available and loaded at first invocation.)
+remain available and loaded at first invocation)
 
 1.2 Initially load only the code used _immediately_ at the application startup
 (renders initial UI, load initial data). Other code could be loaded afterwards in background,
